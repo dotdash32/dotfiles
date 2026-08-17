@@ -1,0 +1,12 @@
+keybind = super+b=text:\x01
+copy-on-select = false
+clipboard-read = allow
+clipboard-write = allow
+
+# Word deletion behavior
+# alt+backspace: delete to punctuation (stops at . - _ / etc)
+keybind = alt+backspace=text:\x1b\x7f
+# cmd+backspace: delete entire word including punctuation
+keybind = super+backspace=text:\x17
+
+theme = Catppuccin Mocha

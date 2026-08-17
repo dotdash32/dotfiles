@@ -1,0 +1,32 @@
+# deleting words
+[[keyboard.bindings]]
+key = "Back"
+mods = "Alt"
+chars = "\u001b\u007f"
+
+[[keyboard.bindings]]
+key = "Back"
+mods = "Command"
+chars = "\u0017"
+
+[[keyboard.bindings]]
+key = "Left"
+mods = "Alt"
+chars = "\u001bB"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Alt"
+chars = "\u001bF"
+
+[[keyboard.bindings]]
+key = "Left"
+mods = "Command"
+chars = "\u001bOF"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Command"
+chars = "\u001bOH"
+mode = "AppCursor"

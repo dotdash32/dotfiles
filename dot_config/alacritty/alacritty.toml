@@ -1,0 +1,13 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/ubuntu.toml",
+    "~/.config/alacritty/keybindings/tmux-nvim.toml",
+    "~/.config/alacritty/keybindings/term-nav.toml"
+]
+
+[font]
+size = 12
+normal = { family = "Menlo", style = "Regular" }
+
+[window]
+option_as_alt = "Both"
