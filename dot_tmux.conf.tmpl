@@ -1,10 +1,13 @@
-# local mac config
-
+{{ if eq .chezmoi.os "darwin" -}} # mac config
 unbind C-b
-
-## local changes
-set -g prefix {{ .tmux_prefix }}
-set -g status-style {{ .tmux_status_line | quote }}
+set -g prefix C-a
+{{ else if eq .chezmoi.hostname "joshuadewitt-desktop" -}} # workstation
+unbind C-b
+set -g prefix C-space
+set -g status-style "bg=magenta,fg=white"
+{{ else }}  # default, C-b, but colorize bar
+set -g status-style "bg=cyan,fg=black"
+{{ end }}
 
 set-option -g allow-passthrough on
 set-option -g mouse on
