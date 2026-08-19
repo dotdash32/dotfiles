@@ -30,3 +30,18 @@ key = "Right"
 mods = "Command"
 chars = "\u001bOH"
 mode = "AppCursor"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+chars = ""
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Command"
+chars = ""
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+chars = ""
