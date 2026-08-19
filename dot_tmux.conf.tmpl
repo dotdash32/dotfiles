@@ -1,7 +1,10 @@
 # local mac config
 
 unbind C-b
+
+## local changes
 set -g prefix {{ .tmux_prefix }}
+set -g status-style {{ .tmux_status_line | quote }}
 
 set-option -g allow-passthrough on
 set-option -g mouse on
@@ -29,7 +32,6 @@ bind '"' split-window -c "#{pane_current_path}"
 
 set -g default-terminal "xterm-256color"
 bind r source-file ~/.tmux.conf
-set -g status-style "bg=pink,fg=black"
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
