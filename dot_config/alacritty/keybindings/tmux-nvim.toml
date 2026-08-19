@@ -3,3 +3,19 @@ key = 'B'
 mods = 'Command'
 chars = "\u0001"
 
+# disable new tab/window
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+chars = ""
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+chars = ""
+
+# disable closing window, keep quit'ing
+[[keyboard.bindings]]
+key = "W"
+mods = "Command"
+chars = ""
