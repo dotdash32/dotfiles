@@ -1,0 +1,17 @@
+# Common settings
+[merge]
+  command = "nvim"
+  args = [
+        "-d",
+        {{ printf "%q" "{{ .Destination }}" }},
+        {{ printf "%q" "{{ .Source }}" }},
+        {{ printf "%q" "{{ .Target }}" }},
+    ] 
+
+{{- $gh_email := promptStringOnce . "gh_email" "Email address for GitHub" -}}
+{{ "" }} 
+
+# data
+[data]
+    gh_email = {{ $gh_email | quote }}
+ 
