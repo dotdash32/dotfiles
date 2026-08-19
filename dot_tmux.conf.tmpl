@@ -1,6 +1,7 @@
 {{ if eq .chezmoi.os "darwin" -}} # mac config
 unbind C-b
 set -g prefix C-a
+set -g status-style "bg=pink,fg=black"
 {{ else if eq .chezmoi.hostname "joshuadewitt-desktop" -}} # workstation
 unbind C-b
 set -g prefix C-space
