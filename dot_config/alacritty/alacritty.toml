@@ -1,5 +1,6 @@
 [general]
 import = [
+    # "~/.config/alacritty/themes/themes/catppuccin_mocha.toml",
     "~/.config/alacritty/themes/themes/ubuntu.toml",
     "~/.config/alacritty/keybindings/tmux-nvim.toml",
     "~/.config/alacritty/keybindings/term-nav.toml"
