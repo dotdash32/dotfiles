@@ -1,0 +1,40 @@
+[user]
+	name = Josh DeWitt
+	email = josh.dewitt@skydio.com # TODO(jd) use template
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[fetch]
+	prune = true
+	pruneTags = true
+[commit]
+	template = ~/.gitmessage
+[core]
+	; editor = code --wait
+	editor = nvim 
+[color]
+	ui = auto
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+
+[pretty]
+	oneline-with-topic = "tformat:%C(auto)%h%(decorate) %s %Cblue(%(trailers:key=topic,separator=,valueonly=true))"
+
+[log]
+	excludeDecoration = origin/batch
+	excludeDecoration = refs/remotes/origin/batch
+	excludeDecoration = refs/remotes/origin/batch*
+[alias]
+	logbase = "!f() { BASE=$(git config --get revup.base 2>/dev/null); if [ -z \"$BASE\" ]; then BRANCH=$(git branch --show-current 2>/dev/null); if echo \"$BRANCH\" | grep -q '/revup/'; then BASE=$(echo \"$BRANCH\" | sed 's@.*/revup/@@' | sed 's@/[^/]*$@@'); fi; fi; if [ -z \"$BASE\" ]; then BASE=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'); fi; if [ -z \"$BASE\" ]; then BASE=\"master\"; fi; echo \"Base branch: $BASE\" >&2; git log \"$@\" $BASE; }; f"
