@@ -31,3 +31,7 @@ mods = "Command"
 chars = "\u001bOH"
 mode = "AppCursor"
 
+[[keyboard.bindings]]
+key= "Return"
+mods = "Shift"
+chars = "\u001B\r"
