@@ -4,47 +4,79 @@ set -g prefix C-a
 set -g status-style "bg=pink,fg=black"
 {{ else if eq .chezmoi.hostname "joshuadewitt-desktop" -}} # workstation
 unbind C-b
+unbind C-space
 set -g prefix C-space
 set -g status-style "bg=magenta,fg=white"
 {{ else }}  # default, C-b, but colorize bar
 set -g status-style "bg=cyan,fg=black"
 {{ end }}
-
-set-option -g allow-passthrough on
-set-option -g mouse on
-set-option -g set-titles on
+set -g allow-passthrough on
+set -g mouse on
+set -g set-titles on
 set -g mode-keys vi
+bind r source-file ~/.tmux.conf
 
 # Options: start indexes from 1
 set -g base-index 1
 set -g pane-base-index 1
 set -g renumber-windows on  # keep numbering sequential
 
-# copying
-set -g @plugin 'tmux-plugins/yank'
-set -as terminal-overrides ',*:clipboard:external'
-set -as terminal-overrides ',*:allow-passthrough'
-set -g allow-passthrough on
-set -s set-clipboard on
-
-# set -g @plugin 'tmux-plugins/tmux-sensible'
+# True color support
+set -g default-terminal "tmux-256color"
+set -as terminal-overrides ',alacritty:Tc'
+set -as terminal-overrides ',xterm-256color:Tc'
 
 # creating new windows/panes
 bind c new-window -c "#{pane_current_path}"
-bind - split-window -v -c "#{pane_current_path}"
 bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind C-s setw synchronize-panes
+bind S setw window-size smallest
+unbind space # don't change layout!!
 
-set -g default-terminal "xterm-256color"
-bind r source-file ~/.tmux.conf
+# copy-mode navigation
+bind-key v copy-mode # like vim
+bind-key -T copy-mode-vi  C-Left     send -X previous-word
+bind-key -T copy-mode-vi  C-Right    send -X next-word
+# alt-hl to move around
+bind-key -T copy-mode-vi  M-h   send -X previous-word
+bind-key -T copy-mode-vi  M-l   send -X next-word
 
-set -g @plugin 'tmux-plugins/tpm'
+# copying
+set -g set-clipboard on
+set -as terminal-overrides ',*:Ms=\E]52;c;%p1%s\a'
+
+set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
-set -g @plugin 'pwittchen/tmux-plugin-spotify'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @continuum-restore 'on'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'pwittchen/tmux-plugin-spotify'
+set -g @plugin 'samoshkin/tmux-plugin-sysstat'
+set -g @plugin 'tmux-plugins/tmux-open' # open things from alacritty?
 
-set -g status-left "#{prefix_highlight} [#S] "
+# prefix highlight
+set -g status-left "#{prefix_highlight} #{spotify_playback}[#S] "
+set -g @prefix_highlight_show_copy_mode 'on'
+set -g @prefix_highlight_show_sync_mode 'on'
 
+# spotify
+set -g status-right-length 200
+set -g status-right "#{sysstat_cpu} | #{sysstat_mem} | %H:%M %d-%b"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
+
+# override yank settings, this must go after "run tpm"
+unbind   -T copy-mode-vi  MouseDragEnd1Pane
+bind-key -T root         DoubleClick1Pane select-pane -t = \; if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" { send-keys -M } { copy-mode -H ; send-keys -X select-word }
+bind-key -T root         TripleClick1Pane select-pane -t = \; if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" { send-keys -M } { copy-mode -H ; send-keys -X select-line }
+bind-key -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word
+bind-key -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line
+
+# yank without the trailing newline at the end of the selection.
+# -CP suppresses tmux's own buffer/clipboard write so the untrimmed text never
+# lands anywhere; the script's `load-buffer -w` is the only writer.
+bind-key -T copy-mode-vi y     send-keys -X copy-pipe -CP "~/.tmux/scripts/trim-copy.sh" \; send-keys -X clear-selection
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel -CP "~/.tmux/scripts/trim-copy.sh"
