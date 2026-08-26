@@ -7,9 +7,14 @@ import = [
 ]
 
 [font]
-size = 12  # TODO(jd): make template
-normal = { family = "MesloLGMNerdFontMono", style = "Regular" }
-# normal = { family = "DroidSansMNerdFontMono", style = "Regular" }
+size = {{ .font_size }}
+{{- if eq .chezmoi.os "darwin" }}
+normal.family = "MesloLGM Nerd Font Mono"
+# normal.family = "DroidSansM Nerd Font Mono"
+{{- else }}
+normal.family = "MesloLGMNerdFontMono"
+-# normal.family = "DroidSansMNerdFontMono"
+{{- end }}
 
 [window]
 option_as_alt = "Both"
