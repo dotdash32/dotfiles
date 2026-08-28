@@ -7,7 +7,7 @@ chars = "\u0001"
 [[keyboard.bindings]]
 key = "T"
 mods = "Command"
-chars = ""
+chars = "\u0000"
 
 [[keyboard.bindings]]
 key = "N"
