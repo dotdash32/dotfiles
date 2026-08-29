@@ -1,5 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.o.exrc = true -- enable per-folder config
+
+require('vim._core.ui2').enable()
 
 -- tab sizes
 vim.cmd("set expandtab")
@@ -26,10 +29,21 @@ vim.keymap.set('v', 'd', '"dd')
 -- center cursor after half-page jumps
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<PageDown>", "<C-d>zz")
+vim.keymap.set("n", "<PageUp>", "<C-u>zz")
+vim.keymap.set('n', '<A-j>', "3j")
+vim.keymap.set('n', '<A-k>', "3k")
+vim.opt.scrolloff = 5
+vim.opt.smoothscroll = true
 
 -- move lines in visual mode, like VS Code
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")
+-- move back & forth w/ alt keys
+vim.keymap.set('n', '<A-h>', "b")
+vim.keymap.set('n', '<A-l>', "w")
+-- insert "double newline"
+vim.keymap.set('n', '<A-o>', "O<CR>")
 
 -- Handle splits & tabs more easily
 -- Open splits
