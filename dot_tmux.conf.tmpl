@@ -42,9 +42,11 @@ bind-key -T copy-mode-vi  C-Right    send -X next-word
 bind-key -T copy-mode-vi  M-h   send -X previous-word
 bind-key -T copy-mode-vi  M-l   send -X next-word
 
-# copying
+# copying — forward OSC 52 from apps to outer terminal
 set -g set-clipboard on
+set -s terminal-features 'alacritty:clipboard:RGB:title:bpaste:focus,xterm-256color:clipboard:RGB:title:bpaste:focus'
 set -as terminal-overrides ',*:Ms=\E]52;c;%p1%s\a'
+set-hook -g pane-set-clipboard 'run-shell -b "printf \"\\033]52;c;$(tmux show-buffer | base64 | tr -d \\\\n)\\a\" > #{client_tty}"'
 
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
