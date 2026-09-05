@@ -56,7 +56,7 @@ set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-restore 'on'
-set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'mrjones2014/smart-splits.nvim'
 set -g @plugin 'pwittchen/tmux-plugin-spotify'
 set -g @plugin 'samoshkin/tmux-plugin-sysstat'
 set -g @plugin 'tmux-plugins/tmux-open' # open things from alacritty?
@@ -69,6 +69,12 @@ set -g @prefix_highlight_show_sync_mode 'on'
 # spotify
 set -g status-right-length 200
 set -g status-right "#{sysstat_cpu} | #{sysstat_mem} | %H:%M %d-%b"
+
+# pane resizing, smart-splits.nvim
+set -g @smart-splits_resize_left_key  'M-C-h'
+set -g @smart-splits_resize_down_key  'M-C-j'
+set -g @smart-splits_resize_up_key    'M-C-k'
+set -g @smart-splits_resize_right_key 'M-C-l'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
