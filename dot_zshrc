@@ -111,3 +111,17 @@ export PATH="$PATH:/Users/josh/.lmstudio/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Word motion. zsh uses ZLE, not readline, so ~/.inputrc and the /etc/inputrc
+# that provides these on Linux are both inert here -- they have to be rebound.
+# Keep this after oh-my-zsh so nothing later clobbers it.
+bindkey '^[[1;3C' forward-word    # Alt+Right
+bindkey '^[[1;3D' backward-word   # Alt+Left
+bindkey '^[[1;5C' forward-word    # Ctrl+Right
+bindkey '^[[1;5D' backward-word   # Ctrl+Left
+bindkey '^[^[[C'  forward-word    # ESC-prefix form
+bindkey '^[^[[D'  backward-word
+# what alacritty/keybindings/term-nav.toml actually sends for Alt+arrows;
+# readline folds ESC-F to ESC-f via do-lowercase-version, zsh does not
+bindkey '^[F' forward-word
+bindkey '^[B' backward-word
