@@ -59,8 +59,12 @@ vim.keymap.set({'n', 'v'}, '<A-h>', "b")
 vim.keymap.set({'n', 'v'}, '<A-l>', "w")
 vim.keymap.set({'n', 'v'}, '<A-S-h>', "B")
 vim.keymap.set({'n', 'v'}, '<A-S-l>', "W")
+vim.keymap.set('i', '<M-BS>', '<C-w>')  -- backspace word
 -- insert "double newline"
 vim.keymap.set('n', '<A-o>', "O<CR>")
+-- toggle word wrap
+vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>", { desc = "Toggle word wrap" })
+vim.opt.linebreak = true
 
 -- Handle splits & tabs more easily
 -- Open splits
