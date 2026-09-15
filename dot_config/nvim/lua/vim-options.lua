@@ -42,6 +42,10 @@ vim.keymap.set('x', 'd',  cut_to('d', 'd'),  { expr = true })
 vim.keymap.set('n', 'x',  cut_to('x', 'x'),  { expr = true })
 vim.keymap.set('n', 'X',  cut_to('x', 'X'),  { expr = true })
 vim.keymap.set('x', 'x',  cut_to('x', 'x'),  { expr = true })
+vim.keymap.set('n', 'c',  cut_to('c', 'c'),  { expr = true })
+vim.keymap.set('n', 'cc', cut_to('c', 'cc'), { expr = true })
+vim.keymap.set('n', 'C',  cut_to('c', 'C'),  { expr = true })
+vim.keymap.set('x', 'c',  cut_to('c', 'c'),  { expr = true })
 
 -- center cursor after half-page jumps
 vim.keymap.set("n", "<PageDown>", "<C-d>zz")
