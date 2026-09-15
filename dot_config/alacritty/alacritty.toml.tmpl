@@ -1,7 +1,11 @@
 [general]
 import = [
+    ## colorschemes, only the last one is applied
     # "~/.config/alacritty/themes/themes/catppuccin_mocha.toml",
-    "~/.config/alacritty/themes/themes/ubuntu.toml",
+    # "~/.config/alacritty/themes/themes/ubuntu.toml",
+    "~/.local/share/nvim/site/pack/core/opt/zenbones.nvim/extras/alacritty/duckbones_dark.toml",
+
+    ## additional config
     "~/.config/alacritty/keybindings/tmux-nvim.toml",
     "~/.config/alacritty/keybindings/term-nav.toml"
 ]
@@ -18,6 +22,9 @@ normal.family = "MesloLGMNerdFontMono"
 
 [window]
 option_as_alt = "Both"
+{{- if eq .chezmoi.os "linux" }}
+decorations = "none"
+{{- end }}
 
 [colors.cursor]
 cursor = "#ffffff"
