@@ -21,9 +21,13 @@ require("lazy").setup({
     -- import your plugins
     { import = "plugins" },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  -- install = { colorscheme = { "habamax" } },
+  -- vim.pack.add() runs before this (lsp, mini, colorschemes) and :packadd's
+  -- those plugins onto rtp/packpath. lazy's defaults wipe both, so later
+  -- requires like mason.ui fail even though mason.setup() already ran.
+  performance = {
+    reset_packpath = false,
+    rtp = { reset = false },
+  },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
