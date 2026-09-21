@@ -1,0 +1,40 @@
+# based on duckbones
+# to change: 
+# - base text (yellow)
+# - baseline bar (magenta)
+
+# default colors
+[colors.primary]
+# background = "#181818" # default
+background = "#1A1825" # from rosebones_dark
+# foreground = "#d8d8d8" # default
+foreground = "#E1D4D4" # from rosebones_dark
+
+[colors.normal]
+black   = "#181818" # default
+red     = "#ac4242" # default
+# green   = "#90a959" # default
+green   = '#4e9a06' # from ubuntu
+# green   = "#2f5c08" # separate blue/green
+yellow  = "#f4bf75" # default
+blue    = "#6a9fb5" # default
+# blue    = '#3465a4' # from ubuntu
+# blue    = "#b8dce8" # separate blue/green
+magenta = "#aa759f" # default
+cyan    = "#75b5aa" # default
+white   = "#d8d8d8" # default
+[colors.bright]
+black   = "#6b6b6b" # default
+red     = "#c55555" # default
+green   = "#aac474" # default
+# green   = '#8ae234' # from ubunut
+yellow  = "#feca88" # default
+blue    = "#82b8c8" # default
+magenta = "#c28cb8" # default
+cyan    = "#93d3c3" # default
+white   = "#f8f8f8" # default
+
+
+[colors.cursor]
+text = '#bbbbbb'
+cursor = '#b4d5ff'
