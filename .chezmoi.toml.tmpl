@@ -9,9 +9,11 @@
     ] 
 
 {{- $gh_email := promptStringOnce . "gh_email" "Email address for GitHub" -}}
+{{  $font_size := 12 }}
 {{ "" }} 
 
 # data
 [data]
     gh_email = {{ $gh_email | quote }}
+    font_size = {{ $font_size }}
  
