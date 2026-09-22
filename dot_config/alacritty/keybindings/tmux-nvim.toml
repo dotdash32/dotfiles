@@ -19,3 +19,25 @@ chars = ""
 key = "W"
 mods = "Command"
 chars = ""
+
+# cmd hjkl -> ctrl hjkl for nav
+[[keyboard.bindings]]
+key = "h"
+mods = "Command"
+chars = "\u0008"
+
+[[keyboard.bindings]]
+key = "j"
+mods = "Command"
+chars = "\u000a"
+
+[[keyboard.bindings]]
+key = "k"
+mods = "Command"
+chars = "\u000b"
+
+[[keyboard.bindings]]
+key = "l"
+mods = "Command"
+chars = "\u000c"
+
