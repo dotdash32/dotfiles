@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+git:
+  autoFetch: false # aircam is big, don't always fetch
+
+os:
+  editPreset: nvim-remote
+
+gui:
+  theme:
+    # increase visibility of highlighted text
+    # alternative colors:
+    # - warty inspired:     #4A1A3B
+    # - rosebones Visual:   #523A39
+    # - rosebones PmenuSel: #45415D
+    selectedLineBgColor:
+      - "#45415D"
+    selectedRangeBgColor:
+      - "#45415D"
+
+  # re order side panels
+  sidePanels:
+    - [files, status]
+    - [commits, reflog]
+    - [stash]
+    - [branches, remotes, tags]
+    - [worktrees, submodules]
+
+keybinding:
+  commits:
+    # de-conflict nvim/tmux nav -> it's scary
+    moveDownCommit: <alt+shift+j>
+    moveUpCommit: <alt+shift+k>
