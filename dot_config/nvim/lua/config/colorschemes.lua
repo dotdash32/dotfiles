@@ -3,7 +3,7 @@ vim.pack.add({
   { src = 'https://github.com/itsfoss/warty.nvim' },
   { src = 'https://github.com/catppuccin/nvim',        name = 'catppuccin' },
   { src = 'https://github.com/ellisonleao/gruvbox.nvim' },
-  { src = 'https://github.com/zenbones-theme/zenbones.nvim' },
+  { src = 'https://github.com/zenbones-theme/zenbones.nvim', name = 'zenbones', },
   { src = 'https://github.com/rktjmp/lush.nvim' },  -- zenbones dependency
 })
 
@@ -50,4 +50,4 @@ require('catppuccin').setup({
 vim.g.rosebones_lighten_noncurrent_window = true
 
 -- Active colorscheme (the last colorscheme call is the one that sticks).
-vim.cmd.colorscheme('warty')
+vim.cmd.colorscheme('rosebones')
